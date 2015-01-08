@@ -1,4 +1,4 @@
-(ns simplemon.core
+(ns simplehttpmon.core
   (:gen-class)
   (:require [incanter.core :as icore]
             [incanter.charts :as ichart]
@@ -14,7 +14,7 @@
 (def target-url (atom ""))
 (def at-pool (ovat/mk-pool))
 
-(def chart-file (java.io.File/createTempFile "simplemon" ".png"))
+(def chart-file (java.io.File/createTempFile "simplehttpmon" ".png"))
 (def chart-path (.getPath chart-file))
 (.deleteOnExit chart-file)
 
@@ -25,7 +25,7 @@
        :latency
        :x-label "date"
        :y-label "latency"
-       :title (str "simplemon - " @target-url)
+       :title (str "simplehttpmon - " @target-url)
        :data (icore/to-dataset data))
       (icore/save chart-path :width 1000)))
 

@@ -1,4 +1,4 @@
-(defproject simplemon "0.1.0-SNAPSHOT"
+(defproject simplehttpmon "0.1.0-SNAPSHOT"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
@@ -9,6 +9,6 @@
                  [http-kit "2.1.16"]
                  [clj-time "0.9.0"]
                  [org.clojure/tools.cli "0.3.1"]]
-  :main ^:skip-aot simplemon.core
+  :main ^:skip-aot simplehttpmon.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
