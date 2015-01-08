@@ -22,9 +22,9 @@
 (defn update-chart [data chart-path]
   (-> (ichart/time-series-plot
        :time
-       :latency
+       :response-time
        :x-label "date"
-       :y-label "latency"
+       :y-label "response time"
        :title (str "simplehttpmon - " @target-url)
        :data (icore/to-dataset data))
       (icore/save chart-path :width 1000)))
@@ -38,10 +38,10 @@
     (if error
       (do
         (println "request error")
-        (swap! data #(conj % {:time start-milli :latency -10})))
+        (swap! data #(conj % {:time start-milli :response-time -10})))
       (let [runtime (time/in-millis (time/interval start (time/now)))]
         (println "request took " runtime "ms")
-        (swap! data #(conj % {:time start-milli :latency runtime}))))
+        (swap! data #(conj % {:time start-milli :response-time runtime}))))
     (update-chart @data chart-path)))
 
 (defn run-scheduler [target interval]
